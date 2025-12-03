@@ -1,4 +1,11 @@
-.first-color { 
+:root {
+	--mint-green: #93e4c1;
+  --light-teal: #3baea0;
+  --medium-teal: #118a7e;
+  --dark-teal: #1f6f78
+} 
+	
+	.first-color { 
 	background: #93e4c1; 
 }
 	
@@ -13,3 +20,4 @@
 .fourth-color { 
 	background: #1f6f78; 
 }
+
