@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <title>Upcoming Events | TicketBlaster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicketBlaster</title>
-
-    <!-- Link to your CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <!-- Header / Navigation -->
+    <!-- Header / Nav -->
     <header>
+        <h1>TicketBlaster</h1>
+        <img class= "logo" src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
         <nav>
-            <img src="header-ticketmaster.png" alt="TicketBlaster Logo">
-            <ul class="nav-links">
-                <li><a href="home.html" class="active">Home</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="upcoming-events.html">Upcoming Events</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="upcoming-events.html" class="active">Upcoming Events</a>
+            <a href="signin.html">Sign In</a>
         </nav>
     </header>
 
-    <!-- Upcoming Events Section -->
-    <section class="events">
-        <h2>Upcoming Events</h2>
-        <!-- remember to adjust picture size in css -->
+    <!-- Main Content -->
+    <main>
+        <section class="events">
+            <!-- adjust picture size and form in css -->
+            <h2>Upcoming Events</h2>
 
-        <div class="event-card">
+            <div class="events-grid">
+
+                <div class="event-card">
                     <h3>Ariana Grande</h3>
                     <img class= "pictures" src="img/arianagrande.webp" alt="Ariana Grande Performing Live">
                     <p><strong>Date:</strong> July 3, NYC</p>
@@ -60,25 +58,15 @@
                     <p><strong>Venue:</strong> Irving Plaza</p>
                     <a href="lorde.html" class="btn">View Event</a>
                 </div>
-    </section>
 
-    <!-- Main Content -->
-    <main>
-        <section class="features">
-            <h3>Features</h3>
-            <p>Your content goes here!</p>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <a href="aboutus.html" class="btn">About Us</a>
-        <a href="contactus.html" class="btn">Contact Us</a>
-        <a href="faq.html" class="btn">FAQ</a>
-
-        <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
+        <p>© 2025 TicketBlaster. All rights reserved</p>
     </footer>
 
 </body>
-
 </html>
