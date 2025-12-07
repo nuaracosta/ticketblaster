@@ -4,20 +4,29 @@
   --medium-teal: #118a7e;
   --dark-teal: #1f6f78
 } 
-	
-	.first-color { 
-	background: #93e4c1; 
-}
-	
-.second-color { 
-	background: #3baea0; 
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--mint-green);
 }
 
-.third-color { 
-	background: #118a7e; 
+
+
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background: var(--dark-teal);
+  color: white;
+  text-align: center;
 }
 
-.fourth-color { 
-	background: #1f6f78; 
+footer .btn {
+  margin: 0 10px;
+  background: var(--light-teal);
 }
 
+footer p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
