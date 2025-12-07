@@ -5,6 +5,10 @@
   --dark-teal: #1f6f78
 } 
 
+* {
+    background: hotpink !important;
+} 
+
 section.events {
     background: none !important;   /* keeps mint green body background showing */
     display: grid !important;
@@ -36,3 +40,4 @@ section.events .pictures {
     border-radius: 12px !important;
     margin-bottom: 12px !important;
 }
+
