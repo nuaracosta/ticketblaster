@@ -5,39 +5,31 @@
   --dark-teal: #1f6f78
 } 
 
-* {
-    background: hotpink !important;
-} 
-
-section.events {
-    background: none !important;   /* keeps mint green body background showing */
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 30px !important;
-    padding: 40px !important;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--mint-green);
 }
 
-section.events h2 {
-    grid-column: 1 / -1; /* make the heading span both columns */
-    text-align: center;
-    margin-bottom: 10px;
+header {
+  background: var(--dark-teal);
+  padding: 10px 20px;
 }
 
-/* Teal boxes */
-section.events .event-card {
-    background: var(--medium-teal) !important;
-    padding: 20px !important;
-    border-radius: 15px !important;
-    color: white !important;
-    text-align: center !important;
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background: var(--dark-teal);
+  color: white;
+  text-align: center; /* CENTER THE FOOTER CONTENT */
 }
 
-/* Event images */
-section.events .pictures {
-    width: 100% !important;
-    height: 260px !important;
-    object-fit: cover !important;
-    border-radius: 12px !important;
-    margin-bottom: 12px !important;
+footer .btn {
+  margin: 0 10px;
+  background: var(--light-teal);
 }
 
+footer p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
