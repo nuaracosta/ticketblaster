@@ -11,7 +11,6 @@ body {
   background: var(--mint-green);
 }
 
-/* -------------------- Navigation -------------------- */
 header {
   background: var(--dark-teal);
   padding: 10px 20px;
@@ -21,10 +20,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-nav img {
-  height: 50px;
 }
 
 .nav-links {
@@ -91,13 +86,12 @@ nav img {
   background: var(--dark-teal);
 }
 
-/* -------------------- Footer -------------------- */
 footer {
   margin-top: 50px;
   padding: 20px;
   background: var(--dark-teal);
   color: white;
-  text-align: center; /* CENTER THE FOOTER CONTENT */
+  text-align: center; 
 }
 
 footer .btn {
@@ -109,4 +103,5 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
 
