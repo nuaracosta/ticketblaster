@@ -46,7 +46,7 @@ nav {
 .events h2 {
   margin-bottom: 30px;
   color: var(--dark-teal);
-}
+} /* "upcoming events" */
 
 .event-card {
   background: var(--light-teal);
@@ -95,6 +95,7 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
 
 
 
