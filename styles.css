@@ -86,7 +86,7 @@ nav {
   text-align: center;
 
   flex: 1 1 calc(50% - 40px); /* 2 per row, minus the gap */
-  max-width: 400px;           /* keeps widths consistent */
+  max-width: 550px;           /* keeps widths consistent */
   box-sizing: border-box;
 }
 
