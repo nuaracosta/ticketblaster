@@ -75,14 +75,14 @@ nav {
   padding: 10px 20px;
   background: var(--medium-teal);
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
   margin-top: 10px;
 }
 
 .btn:hover {
-  background: var(--dark-teal);
+  background: var(--mint-green);
 }
 
 footer {
@@ -93,15 +93,11 @@ footer {
   text-align: center; 
 }
 
-footer .btn {
-  margin: 0 10px;
-  background: var(--mint-green);
-}
-
 footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
 
 
 
