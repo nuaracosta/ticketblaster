@@ -77,6 +77,7 @@ nav {
   text-align: center;
   margin-bottom: 30px;
   color: var(--dark-teal);
+  text-decoration: underline;
 } /* "upcoming events" */
 
 .event-card {
@@ -111,6 +112,18 @@ nav {
 
 .btn:hover {
   background: var(--mint-green);
+}
+
+summary:hover{
+  cursor: pointer;
+}
+
+.artist-container img {
+  max-width: 600px;  
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;     /* centers it */
 }
 
 footer {
