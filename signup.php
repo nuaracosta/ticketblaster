@@ -1,34 +1,31 @@
 <?php
 session_start();
-require_once "db_login.php"; // your professor’s DB connection
+require_once "db.php";
 
-// 1. Check if form submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Get form values
+    // Email = username in the DB
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    // 2. Hash password securely
+    // Hash password securely
     $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-    // 3. Insert into database
-    // If your DB uses `username` instead of `email`, this still works:
-    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
+    // Default user level = 0 (normal user)
+    $level = 0;
 
-    if (!$stmt) {
-        die("Prepare failed: " . $conn->error);
-    }
-
-    $stmt->bind_param("ss", $email, $hashed);
+    // Insert into DB
+    $stmt = $conn->prepare("INSERT INTO users (username, password, level) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssi", $email, $hashed, $level);
 
     if ($stmt->execute()) {
-        // Redirect user to sign in
-        header("Location: signin.html?success=1");
+        // Success → send user to sign in page
+        header("Location: signin.html?signup=success");
         exit;
     } else {
-        echo "Error creating account: " . $stmt->error;
+        // If username already exists or DB error
+        header("Location: signup.html?error=username-taken");
+        exit;
     }
 }
 ?>
