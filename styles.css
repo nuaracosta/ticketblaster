@@ -4,6 +4,9 @@
   --medium-teal: #118a7e; 
   --dark-teal: #1f6f78;
 }
+.signup-form, signup-form {
+        text-align: center;
+}
  .checkout-container {
             max-width: 400px;
             margin: 2rem auto;
@@ -181,5 +184,6 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
 
 
