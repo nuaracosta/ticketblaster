@@ -3,8 +3,8 @@
 
 $servername = "localhost"; 
 $username   = "webgroup5";     // Check if this is your exact username
-$password   = "judge cheer through supply"; // <--- PUT YOUR REAL PASSWORD HERE
-$dbname     = "webgroup5_db";  // Check if this is your exact DB name
+$password   = "missing summer dictator strong"; // <--- PUT YOUR REAL PASSWORD HERE
+$dbname     = "webgroup5_default";  // Check if this is your exact DB name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
