@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | TicketBlaster</title>
 
-    <!-- Link to your CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
 
-    <!-- Header / Navigation -->
     <header>
         <nav>
             <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
@@ -24,68 +24,119 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section class="contact-us">
-        <h2>Contact Us</h2>
+            <h2>Contact Us</h2>
 
-        <p class="contact-intro">
+            <p class="contact-intro">
                 Have questions or need help with your tickets? Reach out to us — we're here to help.
-        </p>
-
-    <div class="contact-wrapper">
-
-        <!-- Email Form -->
-        <div class="contact-form">
-            <h3>Email Us</h3>
-
-            <form action="contact.php" method="POST">
-                <div class="input-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="Your email" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
-                </div>
-
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-
-        <!-- Phone Info -->
-        <div class="contact-phone">
-            <h3>Call Our Support Center</h3>
-            <p>
-                📞 <strong>1-800-555-BLST</strong>
             </p>
-            <p>
-                Available Monday - Friday<br>
-                9:00 AM - 6:00 PM (ET)
-            </p>
-        </div>
 
-    </div>
-</section>
+            <div class="contact-wrapper">
+
+                <div class="contact-form">
+                    <h3>Email Us</h3>
+
+                    <form action="contact.php" method="POST" id="contactForm">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-phone">
+                    <h3>Call Our Support Center</h3>
+                    <p>
+                        📞 <strong>1-800-555-BLST</strong>
+                    </p>
+                    <p>
+                        Available Monday - Friday<br>
+                        9:00 AM - 6:00 PM (ET)
+                    </p>
+                </div>
+
+            </div>
+        </section>
 
 
     </main>
 
-    <!-- Footer -->
     <footer>
         <a href="aboutus.html" class="btn">About Us</a>
         <a href="contactus.html" class="btn">Contact Us</a>
         <a href="faq.html" class="btn">FAQ</a>
 
         <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
-    </footer> 
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page reload
+
+            // Change button to indicate loading
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch('contact.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Success Popup
+                        Swal.fire({
+                            title: 'Message Sent!',
+                            text: 'Thanks for reaching out to TicketBlaster. We will be in touch soon.',
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6', // You can change this color to match your theme
+                            confirmButtonText: 'Great!'
+                        });
+                        form.reset();
+                    } else {
+                        // Error Popup
+                        Swal.fire({
+                            title: 'Error',
+                            text: data.message || 'Something went wrong.',
+                            icon: 'error'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: 'Network error. Please try again later.',
+                        icon: 'error'
+                    });
+                })
+                .finally(() => {
+                    // Reset button
+                    submitBtn.innerText = originalText;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 
 </body>
-
 </html>
