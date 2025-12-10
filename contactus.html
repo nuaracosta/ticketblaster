@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | TicketBlaster</title>
-
     <link rel="stylesheet" href="styles.css">
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
 
     <header>
@@ -27,17 +23,14 @@
     <main>
         <section class="contact-us">
             <h2>Contact Us</h2>
-
             <p class="contact-intro">
                 Have questions or need help with your tickets? Reach out to us — we're here to help.
             </p>
 
             <div class="contact-wrapper">
-
                 <div class="contact-form">
                     <h3>Email Us</h3>
-
-                    <form action="contact.php" method="POST" id="contactForm">
+                    <form id="contactForm">
                         <div class="input-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -59,82 +52,52 @@
 
                 <div class="contact-phone">
                     <h3>Call Our Support Center</h3>
-                    <p>
-                        📞 <strong>1-800-555-BLST</strong>
-                    </p>
+                    <p>📞 <strong>1-800-555-BLST</strong></p>
                     <p>
                         Available Monday - Friday<br>
                         9:00 AM - 6:00 PM (ET)
                     </p>
                 </div>
-
             </div>
         </section>
-
-
     </main>
 
     <footer>
         <a href="aboutus.html" class="btn">About Us</a>
         <a href="contactus.html" class="btn">Contact Us</a>
         <a href="faq.html" class="btn">FAQ</a>
-
         <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
     </footer>
 
     <script>
-        const form = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page reload
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
 
-            // Change button to indicate loading
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'Sending...';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.disabled = true;
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending...';
+                submitBtn.style.opacity = '0.7';
+                submitBtn.disabled = true;
 
-            const formData = new FormData(form);
-
-            fetch('contact.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        // Success Popup
-                        Swal.fire({
-                            title: 'Message Sent!',
-                            text: 'Thanks for reaching out to TicketBlaster. We will be in touch soon.',
-                            icon: 'success',
-                            confirmButtonColor: '#3085d6', // You can change this color to match your theme
-                            confirmButtonText: 'Great!'
-                        });
-                        form.reset();
-                    } else {
-                        // Error Popup
-                        Swal.fire({
-                            title: 'Error',
-                            text: data.message || 'Something went wrong.',
-                            icon: 'error'
-                        });
-                    }
-                })
-                .catch(error => {
+                setTimeout(function() {
                     Swal.fire({
-                        title: 'Oops!',
-                        text: 'Network error. Please try again later.',
-                        icon: 'error'
+                        title: 'Message Sent!',
+                        text: 'Thanks for reaching out to TicketBlaster. We will be in touch soon.',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Great!'
                     });
-                })
-                .finally(() => {
-                    // Reset button
+
+                    form.reset();
                     submitBtn.innerText = originalText;
                     submitBtn.style.opacity = '1';
                     submitBtn.disabled = false;
-                });
+
+                }, 1500);
+            });
         });
     </script>
 
