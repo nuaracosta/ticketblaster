@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "webgroup5";          // your TopHat username
-$pass = "missing summer dictator strong";   // your 4-word password
+$pass = "south rocket brain model";   // your 4-word password
 $dbname = "webgroup5_default";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
