@@ -4,7 +4,7 @@
   --medium-teal: #118a7e; 
   --dark-teal: #1f6f78;
 }
-.signup-form, signup-form {
+.login-form, .signup-form {
         text-align: center;
 }
  .checkout-container {
@@ -184,6 +184,7 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
 
 
 
