@@ -12,8 +12,8 @@ the password variable so that it will not accidently be sent as output to the br
 
 */
 $DB_SERVER = $_SERVER['SERVER_PORT'] > 500 ? "vesmir.dom" : "localhost"; //Your userid for tophat/database server, this is case sensitive
-$DB_USERNAME = "webgroup"; //Your userid for tophat/database server, this is case sensitive
-$DB_DATABASE = "webgroup5_defualt"; //Name of your database, the default is yourusername_default, this is case sensitive
+$DB_USERNAME = "webgroup5"; //Your userid for tophat/database server, this is case sensitive
+$DB_DATABASE = "webgroup5_default"; //Name of your database, the default is yourusername_default, this is case sensitive
 
 $db_pass_path = isset($_SERVER['CONTEXT_DOCUMENT_ROOT']) ? $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/../db.txt" : "../db.txt";
 
