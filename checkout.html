@@ -5,42 +5,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | TicketBlaster</title>
-
-    <!-- Link to your CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .checkout-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: sans-serif;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        .row {
+            display: flex;
+            gap: 1rem;
+        }
+        .col {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Header / Navigation -->
     <header>
         <nav>
-            <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
+            <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo" style="height: 50px;">
             <ul class="nav-links">
-                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="home.html">Home</a></li>
                 <li><a href="signin.html">Sign In</a></li>
                 <li><a href="upcoming-events.html">Upcoming Events</a></li>
             </ul>
         </nav>
     </header>
 
-
-    <!-- Hero Section -->
-    <p> In construction </p>
-    <!-- Main Content -->
     <main>
-        <p>In construction</p>
+        <div class="checkout-container">
+            <h2>Checkout</h2>
+            <form id="paymentForm">
+                
+                <div class="form-group">
+                    <label>Card Number (16 digits)</label>
+                    <input type="text" id="cardNumber" placeholder="1234567812345678" maxlength="16">
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Expiry (MM/YY)</label>
+                        <input type="text" id="expiryDate" placeholder="12/25" maxlength="5">
+                    </div>
+                    <div class="col form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Name on Card</label>
+                    <input type="text" id="cardName" placeholder="John Doe">
+                </div>
+
+                <button type="submit" class="btn-submit">Pay Now</button>
+            </form>
+        </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <a href="aboutus.html" class="btn">About Us</a>
         <a href="contactus.html" class="btn">Contact Us</a>
         <a href="faq.html" class="btn">FAQ</a>
-
         <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
     </footer>
 
-</body>
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
+            var cardNum = document.getElementById('cardNumber').value;
+            var expiry = document.getElementById('expiryDate').value;
+            var cvv = document.getElementById('cvv').value;
+            var name = document.getElementById('cardName').value;
+
+            if (cardNum.length !== 16 || isNaN(cardNum)) {
+                alert("Please enter a valid 16-digit card number (no spaces).");
+                return;
+            }
+
+            if (expiry.length !== 5 || !expiry.includes('/')) {
+                alert("Please enter a valid date (MM/YY).");
+                return;
+            }
+
+            if (cvv.length !== 3 || isNaN(cvv)) {
+                alert("CVV must be 3 digits.");
+                return;
+            }
+
+            if (name === "") {
+                alert("Please enter the name on the card.");
+                return;
+            }
+
+            alert("Payment Successful!");
+        });
+    </script>
+
+</body>
 </html>
