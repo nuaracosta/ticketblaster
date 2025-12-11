@@ -59,13 +59,8 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <a href="aboutus.html" class="btn">About Us</a>
-        <a href="contactus.html" class="btn">Contact Us</a>
-        <a href="faq.html" class="btn">FAQ</a>
+    <?php include "footer.php"; ?>
 
-        <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
-    </footer>
     
 </body>
 

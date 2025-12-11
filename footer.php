@@ -1,14 +1,19 @@
-		</section>
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script>
-			
-			$(document).ready( function() {
-				$('nav ul li').click(function(e) { 
-					//$(this).find("a").trigger('click');
-					window.location = $(this).find("a").attr('href');
-				});
-			});
-			
-		</script>
-	</body>
+<footer>
+    <a href="aboutus.html" class="btn">About Us</a>
+    <a href="contactus.html" class="btn">Contact Us</a>
+    <a href="faq.html" class="btn">FAQ</a>
+
+    <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('nav ul li').click(function(e) { 
+            window.location = $(this).find("a").attr('href');
+        });
+    });
+</script>
+
+</body>
 </html>
