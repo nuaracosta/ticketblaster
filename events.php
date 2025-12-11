@@ -15,7 +15,7 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Upcoming Events - TicketBlaster</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
