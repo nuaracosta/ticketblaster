@@ -50,8 +50,8 @@ $username = $_SESSION["username"];
             <h2>My Actions</h2>
 
         <div class="actions">
-            <a href="#" class="btn">View My Tickets</a>
-            <a href="#" class="btn">Purchase Tickets</a>
+            <a href="my-tickets.php" class="btn">View My Tickets</a>
+            <a href="upcoming-events.html" class="btn">Purchase Tickets</a>
             <a href="logout.php" class="btn">Logout</a>
 
         </div>
