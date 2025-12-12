@@ -60,5 +60,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <li><a href="events.php">Upcoming Events</a></li>
         </ul>
     </nav>
+</header>
 
+<form class="login-form" action="signin.php" method="POST">
+    <h2>Sign In</h2>
 
+    <?php if (!empty($error)): ?>
+        <p style="color:red; font-weight:bold;"><?= $error ?></p>
+    <?php endif; ?>
+
+    <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" required>
+    </div>
+
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+</form>
+
+<p style="text-align:center; margin-top:20px;">
+    Don't have an account? <a href="signup.php">Sign Up</a>
+</p>
+
+<footer>
+    <a href="aboutus.html" class="btn">About Us</a>
+    <a href="contactus.html" class="btn">Contact Us</a>
+    <a href="faq.html" class="btn">FAQ</a>
+
+    <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

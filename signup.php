@@ -1,34 +1,124 @@
 <?php
 session_start();
-require_once "db.php";
+require_once "db.php"; // DB connection
 
+$error = "";
+$success = "";
+
+// If form was submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $name = trim($_POST["name"]);      // NEW
+    $name = trim($_POST["name"]);
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
-    $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $level = 0;
 
-    // Insert new user with name field
-    $stmt = $conn->prepare("INSERT INTO users (name, username, password, level) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("sssi", $name, $email, $hashed, $level);
+    // Check if email already exists
+    $check = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $checkResult = $check->get_result();
 
-    if ($stmt->execute()) {
+    if ($checkResult->num_rows > 0) {
+        $error = "This email is already registered.";
+    } else {
 
-        // AUTO LOGIN
-        $_SESSION["user_id"] = $stmt->insert_id;  
-        $_SESSION["username"] = $email;           
-        $_SESSION["name"] = $name;                // NEW
-        $_SESSION["level"] = $level;
+        // Hash password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        header("Location: dashboard.php");
-        exit;
-    } 
-    else {
-        header("Location: signup.html?error=username-taken");
-        exit;
+        // Insert new user
+        $stmt = $conn->prepare(
+            "INSERT INTO users (username, password, name) VALUES (?, ?, ?)"
+        );
+        $stmt->bind_param("sss", $email, $hashedPassword, $name);
+
+        if ($stmt->execute()) {
+            // redirect to signin page
+            header("Location: signin.php?registered=1");
+            exit;
+        } else {
+            $error = "Something went wrong. Please try again.";
+        }
     }
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp | TicketBlaster</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="signin.php">Sign In</a></li>
+            <li><a href="events.php">Upcoming Events</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="signup-container">
+    <form class="signup-form" action="signup.php" method="POST">
+        <h2>Create Account</h2>
+
+        <?php if (!empty($error)): ?>
+            <p style="color:red; font-weight:bold;"><?= $error ?></p>
+        <?php endif; ?>
+
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Enter your name"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label for="email">E-mail</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Enter your email"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Create a password"
+                required>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <p class="signup-text">
+            Already have an account?
+            <a href="signin.php">Log in</a>
+        </p>
+    </form>
+</div>
+
+<footer>
+    <a href="aboutus.html" class="btn">About Us</a>
+    <a href="contactus.html" class="btn">Contact Us</a>
+    <a href="faq.html" class="btn">FAQ</a>
+
+    <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
