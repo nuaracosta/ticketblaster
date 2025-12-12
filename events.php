@@ -23,9 +23,10 @@ $result = $stmt->get_result();
     <nav>
         <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
         <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="home.php" class="active">Home</a></li>
             <li><a href="signin.php">Sign In</a></li>
-            <li><a href="events.php" class="active">Upcoming Events</a></li>
+            <li><a href="events.php">Upcoming Events</a></li>
+            <li><a href="signup.php">Sign Up</a></li>
         </ul>
     </nav>
 </header>

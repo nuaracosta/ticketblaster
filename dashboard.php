@@ -32,9 +32,10 @@ $username = $_SESSION["username"];
         <nav>
             <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
             <ul class="nav-links">
-                <li><a href="home.html" class="active">Home</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="upcoming-events.html">Upcoming Events</a></li>
+                <li><a href="home.php" class="active">Home</a></li>
+            <li><a href="signin.php">Sign In</a></li>
+            <li><a href="events.php">Upcoming Events</a></li>
+            <li><a href="signup.php">Sign Up</a></li>
             </ul>
         </nav>
     </header>
