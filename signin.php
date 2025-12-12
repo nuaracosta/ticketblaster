@@ -1,36 +1,64 @@
 <?php
 session_start();
-require_once "db.php";
+require_once "db.php"; // your DB connection
 
+$error = "";
+
+// When user submits the form:
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $email = trim($_POST["email"]);
-    $password = $_POST["password"];
+    $password = trim($_POST["password"]);
 
-    $stmt = $conn->prepare("SELECT user_id, name, password, level FROM users WHERE username = ?");
+    // Prepare statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT user_id, username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $stmt->store_result();
 
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($uid, $name, $hashed, $level);
-        $stmt->fetch();
+    $result = $stmt->get_result();
 
-        if (password_verify($password, $hashed)) {
+    // Check if user exists
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
 
-            $_SESSION["user_id"] = $uid;
-            $_SESSION["username"] = $email;
-            $_SESSION["name"] = $name;
-            $_SESSION["level"] = $level;
+        // Verify password with password_verify()
+        if (password_verify($password, $row["password"])) {
 
-            // ⭐ THIS is what sends the user to their dashboard
+            // Store user session
+            $_SESSION["user_id"] = $row["user_id"];
+            $_SESSION["username"] = $row["username"];
+
             header("Location: dashboard.php");
             exit;
+        } else {
+            $error = "Incorrect password.";
         }
+    } else {
+        $error = "User not found.";
     }
-
-    header("Location: signin.html?error=invalid");
-    exit;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | TicketBlaster</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="signin.php" class="active">Sign In</a></li>
+            <li><a href="events.php">Upcoming Events</a></li>
+        </ul>
+    </nav>
+
 
