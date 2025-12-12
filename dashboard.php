@@ -53,7 +53,7 @@ $username = $_SESSION["username"];
 
         <div class="actions">
             <a href="my-tickets.php" class="btn">View My Tickets</a>
-            <a href="upcoming-events.html" class="btn">Purchase Tickets</a>
+            <a href="events.php" class="btn">Purchase Tickets</a>
             <a href="logout.php" class="btn">Logout</a>
 
         </div>
