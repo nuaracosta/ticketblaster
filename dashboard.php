@@ -44,6 +44,8 @@ $username = $_SESSION["username"];
     <main>
          <!-- Upcoming Events Section -->
      <h2>Welcome, <?php echo htmlspecialchars($_SESSION["name"]); ?>!</h2>
+     
+
 
 
         <section class="user-actions">

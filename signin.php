@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = trim($_POST["password"]);
 
     // Prepare statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT user_id, username, password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT user_id, username, password, name FROM users WHERE username = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
 
@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Store user session
             $_SESSION["user_id"] = $row["user_id"];
             $_SESSION["username"] = $row["username"];
+            $_SESSION["name"] = $row["name"];   // ADD THIS
+
 
             header("Location: dashboard.php");
             exit;
