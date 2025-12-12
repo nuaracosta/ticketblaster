@@ -5,8 +5,7 @@ require_once "db.php";
 // Fetch the first 4 upcoming events for the homepage
 $sql = "SELECT event_id, name, event_date, location, image 
         FROM events 
-        ORDER BY event_date ASC
-        LIMIT 4";
+        ORDER BY event_date ASC";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
