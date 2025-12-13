@@ -25,11 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Hash password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert new user
-        $stmt = $conn->prepare(
-            "INSERT INTO users (username, password, name) VALUES (?, ?, ?)"
+    $stmt = $conn->prepare(
+        "INSERT INTO users (username, password, name, level) VALUES (?, ?, ?, ?)"
         );
-        $stmt->bind_param("sss", $email, $hashedPassword, $name);
+
+        $level = "user";
+
+        $stmt->bind_param("ssss", $email, $hashedPassword, $name, $level);
+
 
         if ($stmt->execute()) {
             // redirect to signin page
