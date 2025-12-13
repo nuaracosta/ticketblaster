@@ -12,16 +12,7 @@
 
 <body>
 
-    <header>
-        <nav>
-            <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo" style="height: 50px;">
-            <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="upcoming-events.html">Upcoming Events</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include "header.php"; ?>
 
     <main>
         <div class="checkout-container">
@@ -60,12 +51,7 @@
         </div>
     </main>
 
-    <footer>
-        <a href="aboutus.html" class="btn">About Us</a>
-        <a href="contactus.html" class="btn">Contact Us</a>
-        <a href="faq.html" class="btn">FAQ</a>
-        <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
-    </footer>
+
 
     <script>
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
@@ -125,6 +111,8 @@
             });
         });
     </script>
+
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>

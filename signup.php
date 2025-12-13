@@ -57,17 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
 
-<header>
-    <nav>
-        <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
-        <ul class="nav-links">
-            <li><a href="home.php" class="active">Home</a></li>
-            <li><a href="signin.php">Sign In</a></li>
-            <li><a href="events.php">Upcoming Events</a></li>
-            <li><a href="signup.php">Sign Up</a></li>
-        </ul>
-    </nav>
-</header>
+    <?php include "header.php"; ?>
 
 <div class="signup-container">
     <form class="signup-form" action="signup.php" method="POST">
@@ -116,13 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
 </div>
 
-<footer>
-    <a href="aboutus.html" class="btn">About Us</a>
-    <a href="contactus.html" class="btn">Contact Us</a>
-    <a href="faq.html" class="btn">FAQ</a>
-
-    <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
-</footer>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

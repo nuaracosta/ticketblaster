@@ -13,16 +13,7 @@
 <body>
 
     <!-- Header / Navigation -->
-    <header>
-        <nav>
-            <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
-            <ul class="nav-links">
-                <li><a href="home.html" class="active">Home</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="upcoming-events.html">Upcoming Events</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include "header.php"; ?>
 
     <!-- Main Content -->
     <main>
@@ -81,13 +72,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <a href="aboutus.html" class="btn">About Us</a>
-        <a href="contactus.html" class="btn">Contact Us</a>
-        <a href="faq.html" class="btn">FAQ</a>
-
-        <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
-    </footer>
+    <?php include 'footer.php'; ?>
     
 </body>
 
