@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: signin.php");
+    exit;
+}
+
+$event_id = $_POST["event_id"];
+$ticket_type = $_POST["ticket_type"];
+$quantity = (int) $_POST["quantity"];
+?>
+
+<!-- added stuff above -->
+
 <!DOCTYPE html>
 <html lang="en">
 

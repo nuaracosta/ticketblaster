@@ -51,7 +51,26 @@ $event = $result->fetch_assoc();
     <img src="img/<?php echo htmlspecialchars($event["image"]); ?>" 
          alt="<?php echo htmlspecialchars($event["name"]); ?>">
 
-    <div class="prices">
+    <form method="POST" action="checkout.php">
+    <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+
+    <h2>Prices</h2>
+
+    <select name="ticket_type" required>
+        <option value="">Select Ticket Type</option>
+        <option value="general">General - $<?php echo $event["price_general"]; ?></option>
+        <option value="premium">Premium - $<?php echo $event["price_premium"]; ?></option>
+        <option value="vip">VIP - $<?php echo $event["price_vip"]; ?></option>
+    </select>
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="1" max="10" value="1" required>
+
+    <button type="submit" class="btn buy-btn">Purchase</button>
+</form>
+
+
+    <!-- <div class="prices">
         <h2>Prices</h2>
 
         <select name="price" id="price">
@@ -62,11 +81,11 @@ $event = $result->fetch_assoc();
             </option>
 
             <option value="premium">
-                Premium - $<?php echo $event["price_premium"]; ?>
+                Premium - $< ? php echo $event["price_premium"]; ?>
             </option>
 
             <option value="vip">
-                VIP - $<?php echo $event["price_vip"]; ?>
+                VIP - $< ?php echo $event["price_vip"]; ?>
             </option>
         </select>
 
@@ -79,9 +98,9 @@ $event = $result->fetch_assoc();
             max="10" 
             value="1">
 
-        <a href="checkout.php?event_id=<?php echo $event_id; ?>" 
+        <a href="checkout.php?event_id=< ?php echo $event_id; ?>" 
            class="btn buy-btn">Purchase</a>
-    </div>
+    </div> -->
 </div>
 
 <!-- Ticket Tiers Description -->
