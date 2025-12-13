@@ -1,14 +1,57 @@
 <?php
 session_start();
+require_once "db.php";
 
+// Login wall
 if (!isset($_SESSION["user_id"])) {
     header("Location: signin.php");
     exit;
 }
 
-$event_id = $_POST["event_id"];
+// Validate incoming data
+if (!isset($_POST["event_id"], $_POST["ticket_type"], $_POST["quantity"])) {
+    die("Invalid checkout request.");
+}
+
+$user_id = $_SESSION["user_id"];
+$event_id = (int) $_POST["event_id"];
 $ticket_type = $_POST["ticket_type"];
 $quantity = (int) $_POST["quantity"];
+
+
+$stmt = $conn->prepare(
+    "SELECT name, event_date, location, 
+            price_general, price_premium, price_vip 
+     FROM events 
+     WHERE event_id = ?"
+);
+$stmt->bind_param("i", $event_id);
+$stmt->execute();
+$event = $stmt->get_result()->fetch_assoc();
+
+if (!$event) {
+    die("Event not found.");
+}
+
+switch ($ticket_type) {
+    case "general":
+        $price = $event["price_general"];
+        $ticket_label = "General Admission";
+        break;
+    case "premium":
+        $price = $event["price_premium"];
+        $ticket_label = "Premium";
+        break;
+    case "vip":
+        $price = $event["price_vip"];
+        $ticket_label = "VIP";
+        break;
+    default:
+        die("Invalid ticket type.");
+}
+
+$total = $price * $quantity;
+
 ?>
 
 <!-- added stuff above -->
@@ -30,15 +73,37 @@ $quantity = (int) $_POST["quantity"];
     <?php include "header.php"; ?>
 
     <main>
+        <div class="checkout-summary">
+    <h3>Order Summary</h3>
+
+    <p><strong>Event:</strong> <?= htmlspecialchars($event["name"]) ?></p>
+    <p><strong>Date:</strong> <?= date("F j, Y", strtotime($event["event_date"])) ?></p>
+    <p><strong>Venue:</strong> <?= htmlspecialchars($event["location"]) ?></p>
+
+    <p><strong>Ticket Type:</strong> <?= $ticket_label ?></p>
+    <p><strong>Quantity:</strong> <?= $quantity ?></p>
+    <p><strong>Price per ticket:</strong> $<?= number_format($price, 2) ?></p>
+
+    <hr>
+    <p><strong>Total:</strong> $<?= number_format($total, 2) ?></p>
+</div>
+
+
+
         <div class="checkout-container">
             <h2>Checkout</h2>
-            <form id="paymentForm">
+            <form id="paymentForm" method="POST" action="process-purchase.php">
+
+            <input type="hidden" name="event_id" value="<?= $event_id ?>">
+            <input type="hidden" name="ticket_type" value="<?= $ticket_type ?>">
+            <input type="hidden" name="quantity" value="<?= $quantity ?>">
+            <input type="hidden" name="price_paid" value="<?= $price ?>">
                 
-                <p class="signin-text">
+                <!-- <p class="signin-text">
                     Already have an account?
                 <a href="signin.html">Log in</a>
                 </p>
-                
+                 -->
                 
                 <div class="form-group">
                     <label>Card Number (16 digits)</label>
