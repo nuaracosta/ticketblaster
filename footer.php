@@ -1,7 +1,7 @@
 <footer>
-    <a href="aboutus.html" class="btn">About Us</a>
-    <a href="contactus.html" class="btn">Contact Us</a>
-    <a href="faq.html" class="btn">FAQ</a>
+    <a href="aboutus.php" class="btn">About Us</a>
+    <a href="contactus.php" class="btn">Contact Us</a>
+    <a href="faq.php" class="btn">FAQ</a>
 
     <p>&copy; 2025 TicketBlaster. All rights reserved.</p>
 </footer>
