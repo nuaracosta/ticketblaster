@@ -134,63 +134,66 @@ $total = $price * $quantity;
 
 
     <script>
-        document.getElementById('paymentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+document.getElementById('paymentForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // stop default submit until validation passes
 
-            var cardNum = document.getElementById('cardNumber').value;
-            var expiry = document.getElementById('expiryDate').value;
-            var cvv = document.getElementById('cvv').value;
-            var name = document.getElementById('cardName').value;
+    const cardNum = document.getElementById('cardNumber').value.trim();
+    const expiry = document.getElementById('expiryDate').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+    const name = document.getElementById('cardName').value.trim();
 
-            if (cardNum.length !== 16 || isNaN(cardNum)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Card Number',
-                    text: 'Please enter a valid 16-digit card number (no spaces).',
-                    confirmButtonColor: '#3085d6'
-                });
-                return;
-            }
-
-            if (expiry.length !== 5 || !expiry.includes('/')) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Date',
-                    text: 'Please enter a valid date in MM/YY format.',
-                    confirmButtonColor: '#3085d6'
-                });
-                return;
-            }
-
-            if (cvv.length !== 3 || isNaN(cvv)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid CVV',
-                    text: 'CVV must be exactly 3 digits.',
-                    confirmButtonColor: '#3085d6'
-                });
-                return;
-            }
-
-            if (name.trim() === "") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Missing Name',
-                    text: 'Please enter the name on the card.',
-                    confirmButtonColor: '#3085d6'
-                });
-                return;
-            }
-
-            Swal.fire({
-                icon: 'success',
-                title: 'Payment Successful!',
-                text: 'Your transaction has been approved.',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Great!'
-            });
+    // Card number validation
+    if (cardNum.length !== 16 || isNaN(cardNum)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Card Number',
+            text: 'Please enter a valid 16-digit card number (numbers only).'
         });
-    </script>
+        return;
+    }
+
+    // Expiry validation (MM/YY)
+    if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Expiry Date',
+            text: 'Please use MM/YY format.'
+        });
+        return;
+    }
+
+    // CVV validation
+    if (cvv.length !== 3 || isNaN(cvv)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid CVV',
+            text: 'CVV must be exactly 3 digits.'
+        });
+        return;
+    }
+
+    // Name validation
+    if (name === "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Missing Name',
+            text: 'Please enter the name on the card.'
+        });
+        return;
+    }
+
+    // ✅ If everything is valid, show success AND submit to PHP
+    Swal.fire({
+        icon: 'success',
+        title: 'Payment Successful!',
+        text: 'Your transaction has been approved.',
+        confirmButtonText: 'Continue'
+    }).then(() => {
+        document.getElementById('paymentForm').submit();
+    });
+});
+</script>
+
 
     <?php include 'footer.php'; ?>
 
