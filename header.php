@@ -1,22 +1,18 @@
-<!doctype html>
-<!-- S. Miller -->
-<html>
-	<head>
-		<meta charset = "utf-8">
-		<title><?= $page_title ?? '$page_title Undefined' ?></title>
-		<link href="/web214/common.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li><a href="/web214/db">Home</a></li>
-				<?php				
-				if ( isLoggedIn() ) { ?>
-				<li><a href="/web214/db/db_view.php">View</a></li>
-				<li><a href="/web214/db/db_logout.php">Logout</a></li>
-				<?php } else { ?>
-				<li><a href="/web214/db/db_login.php">Login</a></li>
-				<?php } ?>
-			</ul>
-		</nav>
-		<section>
+<header>
+    <nav>
+        <img src="img/header-ticketmaster.png" alt="TicketBlaster Logo">
+        <ul class="nav-links">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="events.php">Upcoming Events</a></li>
+
+            <?php if (isset($_SESSION["user_id"])): ?>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="events.php">Upcoming Events</a></li>
+            <?php else: ?>
+                <li><a href="signin.php">Sign In</a></li>
+                <li><a href="signup.php">Sign Up</a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
+
