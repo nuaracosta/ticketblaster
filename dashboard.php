@@ -1,11 +1,13 @@
 <?php
 session_start();
+require_once "db.php";
 
-// If user is not logged in, send them to the sign in page
+// User must be logged in
 if (!isset($_SESSION["user_id"])) {
-    header("Location: signin.html");
+    header("Location: signin.php");
     exit;
 }
+
 
 // Get username from session
 $username = $_SESSION["username"];
