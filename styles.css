@@ -5,6 +5,10 @@
   --dark-teal: #1f6f78;
 }
 
+.login-form, .signup-form, .contact-us {
+        text-align: center;
+}
+
 html, body {
   overflow-x: hidden;
 }
@@ -149,3 +153,4 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
