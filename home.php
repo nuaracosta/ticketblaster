@@ -49,7 +49,7 @@ $result = $stmt->get_result();
                  alt="<?php echo htmlspecialchars($row["name"]); ?>">
 
             <p><strong>Date:</strong>
-               <?php echo date("F j, Y", strtotime($row["event_date"])); ?>, NYC
+               <?php echo date("F j, Y", strtotime($row["event_date"])); ?>
             </p>
 
             <p><strong>Venue:</strong>
