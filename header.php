@@ -6,6 +6,8 @@
             <li><a href="events.php">Upcoming Events</a></li>
 
             <?php if (isset($_SESSION["user_id"])): ?>
+				<li><a href="dashboard.php">Dashboard</a></li>
+				<li><a href="my-tickets.php">My Tickets</a></li>
                 <li><a href="logout.php">Logout</a></li>
 
             <?php else: ?>
