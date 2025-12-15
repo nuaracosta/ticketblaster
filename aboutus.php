@@ -31,6 +31,9 @@
             then a full platform, and now a thriving business trusted by fans across the country.
         </p>
 
+        <h2> Mission <h2>
+            <p>Our mission is to democratize access to live events by creating a fair, transparent ticketing platform where fans—not bots or resellers—come first.</p>
+
         <p> What We Do : </p>
 
             <ul> 
