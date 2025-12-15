@@ -4,12 +4,23 @@
   --medium-teal: #118a7e; 
   --dark-teal: #1f6f78;
 }
-.login-form, .signup-form, .contact-us, .faq-section {
+.login-form, .signup-form, .contact-us, .faq-section, .dashboard main, .my-tickets main {
         text-align: center;
 }
 
+.event-card.featured {
+    margin: 0 auto;
+}
+
+.my-tickets .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-items: center;
+    gap: 2rem;
+}
+
 html, body {
-  overflow-x: hidden;
+  overflow-x: hidden;img, 
 }
 
 body {
