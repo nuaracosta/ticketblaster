@@ -4,8 +4,7 @@
   --medium-teal: #118a7e; 
   --dark-teal: #1f6f78;
 }
-
-.login-form, .signup-form, .contact-us {
+.login-form, .signup-form, .contact-us, .faq-section {
         text-align: center;
 }
 
@@ -153,4 +152,3 @@ footer p {
   margin-top: 15px;
   font-size: 0.9rem;
 }
-
