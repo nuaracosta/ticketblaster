@@ -38,7 +38,7 @@ $result = $stmt->get_result();
     <title>My Tickets | TicketBlaster</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="my-tickets">
 
 <?php include "header.php"; ?>
 
