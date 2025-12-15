@@ -49,7 +49,7 @@ $nextEvent = $stmt->get_result()->fetch_assoc();
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="dashboard">
 
     <!-- Header / Navigation -->
     <<?php include "header.php"; ?>
