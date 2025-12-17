@@ -73,10 +73,28 @@
 
                 const formData = new FormData(form);
 
-                fetch('contactus.php', {
-                    method: 'POST',
-                    body: formData
-                })
+                const simulateServerRequest = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve({ status: 'success' });
+    }, 1500); 
+});
+
+simulateServerRequest.then(data => {
+    if (data.status === 'success') {
+        Swal.fire({
+            title: 'Message Sent (Demo Mode)!',
+            text: 'This is a simulation. No PHP was used.',
+            icon: 'success',
+            confirmButtonColor: '#3085d6'
+        });
+        form.reset();
+    }
+})
+.finally(() => {
+    submitBtn.innerText = originalText;
+    submitBtn.style.opacity = '1';
+    submitBtn.disabled = false;
+});
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'success') {
