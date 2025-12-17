@@ -59,22 +59,17 @@
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.addEventListener('click', function() {
-                
-                // 1. Check if the form is filled out
                 if(!form.checkValidity()) {
                     form.reportValidity();
                     return;
                 }
 
-                // 2. Visual feedback (Loading state)
                 const originalText = submitBtn.innerText;
                 submitBtn.innerText = 'Sending...';
                 submitBtn.style.opacity = '0.7';
                 submitBtn.disabled = true;
 
-                // 3. Simulate a server delay (1.5 seconds)
                 setTimeout(() => {
-                    // Success Pop-up
                     Swal.fire({
                         title: 'Message Sent!',
                         text: 'Thank you for contacting TicketBlaster. We will get back to you soon.',
@@ -83,7 +78,6 @@
                         confirmButtonText: 'Great!'
                     });
 
-                    // 4. Reset form and button
                     form.reset();
                     submitBtn.innerText = originalText;
                     submitBtn.style.opacity = '1';
