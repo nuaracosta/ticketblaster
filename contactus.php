@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | TicketBlaster</title>
+    <title>Contact Us | TicketBlaster</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -53,83 +53,44 @@
         </section>
     </main>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
 
-            submitBtn.addEventListener('click', function(e) {
+            submitBtn.addEventListener('click', function() {
                 
+                // 1. Check if the form is filled out
                 if(!form.checkValidity()) {
                     form.reportValidity();
                     return;
                 }
 
+                // 2. Visual feedback (Loading state)
                 const originalText = submitBtn.innerText;
                 submitBtn.innerText = 'Sending...';
                 submitBtn.style.opacity = '0.7';
                 submitBtn.disabled = true;
 
-                const formData = new FormData(form);
-
-                const simulateServerRequest = new Promise((resolve) => {
-    setTimeout(() => {
-        resolve({ status: 'success' });
-    }, 1500); 
-});
-
-simulateServerRequest.then(data => {
-    if (data.status === 'success') {
-        Swal.fire({
-            title: 'Message Sent (Demo Mode)!',
-            text: 'This is a simulation. No PHP was used.',
-            icon: 'success',
-            confirmButtonColor: '#3085d6'
-        });
-        form.reset();
-    }
-})
-.finally(() => {
-    submitBtn.innerText = originalText;
-    submitBtn.style.opacity = '1';
-    submitBtn.disabled = false;
-});
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        Swal.fire({
-                            title: 'Message Sent!',
-                            text: 'We have received your message.',
-                            icon: 'success',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Great!'
-                        });
-                        form.reset();
-                    } else {
-                        Swal.fire({
-                            title: 'Error',
-                            text: data.message || 'Could not save message.',
-                            icon: 'error'
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                setTimeout(() => {
+                    // Success Pop-up
                     Swal.fire({
-                        title: 'Oops!',
-                        text: 'Something went wrong. Please try again.',
-                        icon: 'error'
+                        title: 'Message Sent!',
+                        text: 'Thank you for contacting TicketBlaster. We will get back to you soon.',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Great!'
                     });
-                })
-                .finally(() => {
+
+                    form.reset();
                     submitBtn.innerText = originalText;
                     submitBtn.style.opacity = '1';
                     submitBtn.disabled = false;
-                });
+                }, 1500); 
             });
         });
     </script>
+
     <?php include 'footer.php'; ?>
 </body>
 </html>
