@@ -72,6 +72,7 @@
                 submitBtn.style.opacity = '0.7';
                 submitBtn.disabled = true;
 
+                // 3. Simulate a server delay (1.5 seconds)
                 setTimeout(() => {
                     // Success Pop-up
                     Swal.fire({
@@ -82,6 +83,7 @@
                         confirmButtonText: 'Great!'
                     });
 
+                    // 4. Reset form and button
                     form.reset();
                     submitBtn.innerText = originalText;
                     submitBtn.style.opacity = '1';
