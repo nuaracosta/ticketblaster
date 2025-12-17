@@ -73,7 +73,7 @@
 
                 const formData = new FormData(form);
 
-                fetch('contact.php', {
+                fetch('contactus.php', {
                     method: 'POST',
                     body: formData
                 })
