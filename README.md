@@ -67,6 +67,8 @@ Through this project, I gained hands-on experience with:
 
 ---
 
+**[VISIT THE WEBSITE](https://tophat.sunywcc.edu/~webgroup5/home.php)**
+
 ## 👤 Authors
 
 **Nuara Costa**  
